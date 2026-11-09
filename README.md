@@ -1,23 +1,25 @@
 # Transaction Description Categoriser
 
-A small Python command-line tool that groups transaction descriptions into Food, Transport, Entertainment, Shopping, Bills, Income, or Other. It uses keyword rules and Python's standard library; it does not read bank files.
+A Python command-line program for sorting transaction descriptions into Food, Transport, Entertainment, Shopping, Bills, Income, or Other. I made it as a small rules-based project; it does not read bank files or make changes to an account.
 
-## Run
+## Run it
 
-Requires Python 3.11 or newer. From this repository's folder:
+Requires Python 3.11 or newer. From this folder:
 
 ```sh
 python "Work Experience Code.py"
 ```
 
-Choose 1 to categorise a description, 2 to list categories, or 3 to exit. Matching ignores letter case and extra spacing. Descriptions without a known keyword return `Other`.
+Choose **1** to enter a description, **2** to list categories, or **3** to exit. For example, `TESCO Express` returns `Food`. Matching ignores case and extra spaces. Unknown descriptions return `Other`.
 
-## Test
+## Test it
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-## Limitations
+GitHub Actions runs the tests on pushes and pull requests.
 
-The first matching keyword determines the category. These rules can misclassify ambiguous merchants; review results before relying on them for a budget. CSV import and machine learning are possible future additions.
+## How it works
+
+`KEYWORD_MAPPING` holds the rules. The program checks keywords in order and returns the first match, so ambiguous merchant names may need a manual check.
