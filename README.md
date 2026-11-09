@@ -1,25 +1,23 @@
 # Transaction Description Categoriser
 
-A Python-based Command-Line Interface (CLI) application that takes raw, messy bank transaction descriptions and automatically predicts their spending category. This project solves a real-world data problem by standardizing and classifying text into clean budget categories.
+A small Python command-line tool that groups transaction descriptions into Food, Transport, Entertainment, Shopping, Bills, Income, or Other. It uses keyword rules and Python's standard library; it does not read bank files.
 
-## 📌 Project Goals & Functionality
-* **Data Cleaning:** Handles human error, varied casing, and messy spacing by preprocessing inputs.
-* **Accurate Classification:** Maps transactions to explicit categories: `Food`, `Transport`, `Entertainment`, `Shopping`, `Bills`, `Income`, or `Other`.
-* **Crash-Free UI:** Built with a robust, two-option CLI menu that validates user inputs to ensure stable execution.
+## Run
 
----
+Requires Python 3.11 or newer. From this repository's folder:
 
-## 🛠️ Requirements & Tech Stack
-* **Language:** Python 3.x
-* **Libraries Used:** Built using standard Python built-in features (no external dependencies required for the base version).
-* *Planned Extensions:* `csv` for file handling, `pandas` and `scikit-learn` for future machine learning integration.
+```sh
+python "Work Experience Code.py"
+```
 
----
+Choose 1 to categorise a description, 2 to list categories, or 3 to exit. Matching ignores letter case and extra spacing. Descriptions without a known keyword return `Other`.
 
-## 🚀 How to Run the Application
+## Test
 
-1. Make sure you have Python installed on your system.
-2. Open your terminal or command prompt and navigate to the project directory.
-3. Run the following command:
-   ```bash
-   python main.py
+```sh
+python -m unittest discover -s tests -v
+```
+
+## Limitations
+
+The first matching keyword determines the category. These rules can misclassify ambiguous merchants; review results before relying on them for a budget. CSV import and machine learning are possible future additions.
